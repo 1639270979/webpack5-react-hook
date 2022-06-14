@@ -1,0 +1,88 @@
+{
+  "root": true,
+  "env": {
+    "es6": true, // 启用 ES6 语法支持以及新的 ES6 全局变量或类型
+    "node": true, // Node.js 全局变量和 Node.js 作用域
+    "browser": true // 浏览器全局变量
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "settings": {
+    "webpack": {
+      "config": "../webpack/webpack.config.js" // 这是你设置alias的配置文件路径
+    },
+    "import/resolver":{
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      } 
+    }
+  },
+  "globals": {
+    "__DEV__": true,
+    "__TEST__": true,
+    "__PROD__": true,
+    "__COVERAGE__": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "parser": "babel-eslint", // 解析器，默认使用Espree
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-debugger": "off",
+    "eqeqeq": [2, "always"], // 要求使用 === 和 !==
+    "semi": [2, "never"], // 要求或禁止使用分号代替 ASI 
+    "quotes": [2, "single"],  // 强制使用一致的反勾号、双引号或单引号
+    "no-empty": 2, // 禁止出现空语句块
+    "jsx-quotes": 2, // 强制在 JSX 属性中一致地使用双引号或单引号
+    "import/prefer-default-export": 0,
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": 2, // 检查 effect 的依赖
+    "react/jsx-props-no-spreading": 0,
+    "react/destructuring-assignment": 0,
+    "no-use-before-define": 0,
+    "prefer-const": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "react/button-has-type": 0,
+    "no-useless-escape": 2,
+    "no-unused-vars": "warn",
+    "space-before-function-paren": ["error", "never"],
+    "react/jsx-filename-extension":[
+      "error",
+      {
+        "extensions":[".js",".jsx",".ts",".tsx"]
+      }
+    ],
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "ts": "never",
+      "jsx": "never",
+      "tsx": "never"
+      }
+    ]
+  },
+  "ignorePatterns": ["build/", "node_modules", "webpack", "webpack.config.js"],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "mocha": true
+      }
+    }
+  ]
+}
